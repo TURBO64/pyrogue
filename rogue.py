@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
-import curses
+from unicurses import *
 import random
+
 
 # constants
 map_width = 40
 map_height = 16
-stdscr = curses.initscr()
+stdscr = initscr()
 
 # classes
 class Game:
@@ -16,58 +17,58 @@ class Game:
 
 class Interface:
   def __init__(self):
-    curses.noecho()
-    curses.cbreak()
-    curses.curs_set(False)
-    stdscr.keypad(True)
-    curses.start_color()
-    curses.use_default_colors()
-    curses.init_pair( 0, curses.COLOR_WHITE,   curses.COLOR_BLACK)
-    curses.init_pair( 1, curses.COLOR_RED,     curses.COLOR_BLACK)
-    curses.init_pair( 2, curses.COLOR_YELLOW,  curses.COLOR_BLACK)
-    curses.init_pair( 3, curses.COLOR_GREEN,   curses.COLOR_BLACK)
-    curses.init_pair( 4, curses.COLOR_CYAN,    curses.COLOR_BLACK)
-    curses.init_pair( 5, curses.COLOR_BLUE,    curses.COLOR_BLACK)
-    curses.init_pair( 6, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
-    curses.init_pair( 7, curses.COLOR_WHITE,   curses.COLOR_BLACK)
-    curses.init_pair( 8, curses.COLOR_RED,     curses.COLOR_BLACK)
-    curses.init_pair( 9, curses.COLOR_YELLOW,  curses.COLOR_BLACK)
-    curses.init_pair(10, curses.COLOR_GREEN,   curses.COLOR_BLACK)
-    curses.init_pair(11, curses.COLOR_CYAN,    curses.COLOR_BLACK)
-    curses.init_pair(12, curses.COLOR_BLUE,    curses.COLOR_BLACK)
-    curses.init_pair(13, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+    noecho()
+    cbreak()
+    curs_set(False)
+    #keypad(True)
+    start_color()
+    use_default_colors()
+    init_pair( 0, COLOR_WHITE,   COLOR_BLACK)
+    init_pair( 1, COLOR_RED,     COLOR_BLACK)
+    init_pair( 2, COLOR_YELLOW,  COLOR_BLACK)
+    init_pair( 3, COLOR_GREEN,   COLOR_BLACK)
+    init_pair( 4, COLOR_CYAN,    COLOR_BLACK)
+    init_pair( 5, COLOR_BLUE,    COLOR_BLACK)
+    init_pair( 6, COLOR_MAGENTA, COLOR_BLACK)
+    init_pair( 7, COLOR_WHITE,   COLOR_BLACK)
+    init_pair( 8, COLOR_RED,     COLOR_BLACK)
+    init_pair( 9, COLOR_YELLOW,  COLOR_BLACK)
+    init_pair(10, COLOR_GREEN,   COLOR_BLACK)
+    init_pair(11, COLOR_CYAN,    COLOR_BLACK)
+    init_pair(12, COLOR_BLUE,    COLOR_BLACK)
+    init_pair(13, COLOR_MAGENTA, COLOR_BLACK)
   def close(self):
-    curses.nocbreak()
-    curses.echo()
-    stdscr.keypad(False)
-    curses.endwin()
+    nocbreak()
+    echo()
+    #keypad(False)
+    endwin()
   def clear(self):
-    stdscr.clear()
+    refresh()
   def putchar(self, y, x, char):
-    stdscr.move(y, x)
-    stdscr.addch(char)
+    move(y, x)
+    addstr(char)
   def setcolor(self, n):
-    stdscr.attron(curses.color_pair(n) )
+    attron(color_pair(n) )
   def unsetcolor(self, n):
-    stdscr.attroff(curses.color_pair(n) )
+    attroff(color_pair(n) )
   def setbold(self):
-    stdscr.attron(curses.A_BOLD)
+    attron(A_BOLD)
   def unsetbold(self):
-    stdscr.attroff(curses.A_BOLD)
+    attroff(A_BOLD)
   def getinput(self):
-    key = stdscr.getkey()
-    if key == 'q':
+    key = getch()
+    if   key == ord('q'):         # quit
       game.over = True
-    elif key == 'h':
+    elif key == ord('h'):         # left
       if player.move(-1, 0) == 0:
         game.turn += 1
-    elif key == 'j':
+    elif key == ord('j'):         # down
       if player.move(0, 1) == 0:
         game.turn += 1
-    elif key == 'k':
+    elif key == ord('k'):         # up
       if player.move(0, -1) == 0:
         game.turn += 1
-    elif key == 'l':
+    elif key == ord('l'):         # right
       if player.move(1, 0) == 0:
         game.turn += 1
 
@@ -177,12 +178,12 @@ while game.over == False:
   current_map.draw()
   player.draw()
   # debug stuff
-  stdscr.move(0, 41)
-  stdscr.addstr("Turns: " + str(game.turn) )
-  stdscr.move(1, 41)
-  stdscr.addstr("Player X: " + str(player.x) )
-  stdscr.move(2, 41)
-  stdscr.addstr("Player Y: " + str(player.y) )
+  move(0, 41)
+  addstr("Turns: " + str(game.turn) )
+  move(1, 41)
+  addstr("Player X: " + str(player.x) )
+  move(2, 41)
+  addstr("Player Y: " + str(player.y) )
   # handle input
   io.getinput()
 
