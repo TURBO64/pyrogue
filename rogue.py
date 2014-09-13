@@ -3,13 +3,10 @@
 import curses
 import random
 
-# wrapper handles curses subroutines to
-# prevent console borking from crashes
-
 # constants
 map_width = 40
 map_height = 16
-win_main = curses.initscr()
+stdscr = curses.initscr()
 
 # classes
 class Game:
@@ -22,7 +19,7 @@ class Interface:
     curses.noecho()
     curses.cbreak()
     curses.curs_set(False)
-    win_main.keypad(True)
+    stdscr.keypad(True)
     curses.start_color()
     curses.use_default_colors()
     curses.init_pair( 0, curses.COLOR_WHITE,   curses.COLOR_BLACK)
@@ -42,23 +39,23 @@ class Interface:
   def close(self):
     curses.nocbreak()
     curses.echo()
-    win_main.keypad(False)
+    stdscr.keypad(False)
     curses.endwin()
   def clear(self):
-    win_main.clear()
+    stdscr.clear()
   def putchar(self, y, x, char):
-    win_main.move(y, x)
-    win_main.addch(char)
+    stdscr.move(y, x)
+    stdscr.addch(char)
   def setcolor(self, n):
-    win_main.attron(curses.color_pair(n) )
+    stdscr.attron(curses.color_pair(n) )
   def unsetcolor(self, n):
-    win_main.attroff(curses.color_pair(n) )
+    stdscr.attroff(curses.color_pair(n) )
   def setbold(self):
-    win_main.attron(curses.A_BOLD)
+    stdscr.attron(curses.A_BOLD)
   def unsetbold(self):
-    win_main.attroff(curses.A_BOLD)
+    stdscr.attroff(curses.A_BOLD)
   def getinput(self):
-    key = win_main.getkey()
+    key = stdscr.getkey()
     if key == 'q':
       game.over = True
     elif key == 'h':
@@ -180,12 +177,12 @@ while game.over == False:
   current_map.draw()
   player.draw()
   # debug stuff
-  win_main.move(0, 41)
-  win_main.addstr("Turns: " + str(game.turn) )
-  win_main.move(1, 41)
-  win_main.addstr("Player X: " + str(player.x) )
-  win_main.move(2, 41)
-  win_main.addstr("Player Y: " + str(player.y) )
+  stdscr.move(0, 41)
+  stdscr.addstr("Turns: " + str(game.turn) )
+  stdscr.move(1, 41)
+  stdscr.addstr("Player X: " + str(player.x) )
+  stdscr.move(2, 41)
+  stdscr.addstr("Player Y: " + str(player.y) )
   # handle input
   io.getinput()
 
