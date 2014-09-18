@@ -3,7 +3,6 @@
 from unicurses import *
 import random
 
-
 # constants
 map_width = 40
 map_height = 16

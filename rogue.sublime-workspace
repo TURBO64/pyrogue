@@ -1,0 +1,351 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"capitals",
+				"Capitals"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/zb/Documents/inventwithpython/lab-5.py",
+			"settings":
+			{
+				"buffer_size": 2211,
+				"line_ending": "Unix",
+				"name": "#!/usr/bin/python3"
+			}
+		},
+		{
+			"file": "/home/zb/Documents/inventwithpython/hangman.py",
+			"settings":
+			{
+				"buffer_size": 3991,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/User/Python3.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/zb/Documents/inventwithpython/lab5.py",
+		"/home/zb/Documents/pyrogue/rogue.py",
+		"/home/zb/Documents/dragonstory/main.py",
+		"/home/zb/Documents/dragonstory/item.py",
+		"/home/zb/Documents/dragonstory/room.py",
+		"/home/zb/Documents/dragonstory/console.py",
+		"/home/zb/Documents/dragonstory/player.py",
+		"/home/zb/Documents/dragonstory/event.py",
+		"/home/zb/.config/sublime-text-3/Packages/User/Python3.sublime-build",
+		"/home/zb/.config/sublime-text-3/Packages/User/python3.sublime-build",
+		"/home/zb/Documents/dragon/main.py",
+		"/home/zb/Documents/dragon/console.py",
+		"/home/zb/Documents/dragon/player.py",
+		"/home/zb/Documents/dragon/item.py",
+		"/home/zb/Documents/dragon/room.py",
+		"/home/zb/Documents/dragon/event.py",
+		"/home/zb/Documents/dragon/monster.py",
+		"/home/zb/Documents/dragon/npc.py",
+		"/home/zb/dragon/game.py",
+		"/home/zb/dragon/npc.py",
+		"/home/zb/dragon/item.py",
+		"/home/zb/dragon/room.py",
+		"/home/zb/dragon/io.py",
+		"/home/zb/newdragon.py",
+		"/home/zb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/zb/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/zb/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/zb/lab-4.py",
+		"/home/zb/Documents/inventwithpython/finished/lab-3.py",
+		"/home/zb/Documents/inventwithpython/finished/lab-2.py",
+		"/home/zb/Documents/inventwithpython/finished/lab-1.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"cons.say()",
+			"newgame",
+			"outcome",
+			"cons.play",
+			"done",
+			".flag",
+			"trigger",
+			"position",
+			"carry",
+			"input",
+			"describe_room",
+			"room_ca",
+			"describe.",
+			"is a",
+			"events",
+			"event_s",
+			"glob",
+			"self.",
+			"self.player",
+			"self.cons",
+			"self.say",
+			"cons",
+			"console.",
+			"console",
+			"puts",
+			"console.cmd",
+			"io.",
+			"cout",
+			"io.",
+			"self.",
+			"self.cmd",
+			"current",
+			"Creature",
+			"descr",
+			"	",
+			"",
+			"	",
+			"parser.",
+			"spaces",
+			"	",
+			"currentroom",
+			"pickup",
+			"current",
+			"here",
+			"over",
+			"io.",
+			"msg",
+			"newmsg",
+			"msg.",
+			"parse",
+			"parse.",
+			"current.",
+			"Thing"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"print()",
+			".done",
+			"type",
+			"describe",
+			"player",
+			"cons",
+			"cons.say",
+			"cons.",
+			"cons",
+			"say",
+			"self.cmd",
+			"console.",
+			"puts",
+			"console.",
+			"",
+			"io.cmd",
+			"NPC",
+			"  ",
+			"\\033[",
+			"  ",
+			"io.",
+			"  ",
+			"game.currentroom",
+			"pushmsg",
+			"io",
+			"io.",
+			"here.",
+			"Item"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/zb/Documents/inventwithpython/lab-5.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2211,
+								2211
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#!/usr/bin/python3",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 933.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/zb/Documents/inventwithpython/hangman.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								887,
+								887
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 533.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 88.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "rogue.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
