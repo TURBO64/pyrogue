@@ -6,7 +6,6 @@ class Console:
     noecho()
     cbreak()
     curs_set(False)
-    stdscr.keypad(True)
     start_color()
     use_default_colors()
     init_pair( 0, COLOR_WHITE,   COLOR_BLACK)

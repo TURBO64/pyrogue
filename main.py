@@ -77,18 +77,18 @@ def move_player(dx, dy):
     
 def get_input():
   key = getch()
-  if    key == ord('q'):         # quit
+  if   key == ord('q'):         # quit
     game.end = True
-  elif key in [ord('h'), KEY_LEFT]:         # left
+  elif key is ord('h'):         # left
     if move_player(-1, 0) == 0:
       game.turn += 1
-  elif key in [ord('j'), KEY_DOWN]:         # down
+  elif key is ord('j'):         # down
     if move_player(0, 1) == 0:
       game.turn += 1
-  elif key in [ord('k'), KEY_UP]:         # up
+  elif key is ord('k'):         # up
     if move_player(0, -1) == 0:
       game.turn += 1
-  elif key in [ord('l'), KEY_RIGHT]:         # right
+  elif key is ord('l'):         # right
     if move_player(1, 0) == 0:
       game.turn += 1
       
