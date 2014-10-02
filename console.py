@@ -28,7 +28,11 @@ class Console:
     endwin()
   def clear(self):
     refresh()
-  def putchar(self, y, x, char):
+    clear()
+  def add_char(self, x, y, char):
+    move(y, x)
+    addstr(char)
+  def add_str(self, x, y, char):
     move(y, x)
     addstr(char)
   def setcolor(self, n):
