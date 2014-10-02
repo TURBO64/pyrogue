@@ -13,7 +13,7 @@ from player import *
 
 # ---- map functions ----
 def draw_map():
-  for x, col in enumerate(current_map.grid):
+  for x, col in enumerate(currentmap.grid):
     for y, cell in enumerate(col):
       if cell.color > 6:
         cons.setbold()
@@ -23,17 +23,17 @@ def draw_map():
       cons.unsetbold()
 
 def flood(tile):
-  current_map.grid = [[ tile
-    for y in range(current_map.height) ]
-      for x in range(current_map.width) ]
+  currentmap.grid = [[ tile
+    for y in range(currentmap.height) ]
+      for x in range(currentmap.width) ]
 
 def add_tile(tile, x, y):
-  current_map.grid[x][y] = tile
+  currentmap.grid[x][y] = tile
 
 def spray(tile, n):
   for x in range(n):
-    rx = random.randint(0, current_map.width - 1)
-    ry = random.randint(0, current_map.height - 1)
+    rx = random.randint(0, currentmap.width - 1)
+    ry = random.randint(0, currentmap.height - 1)
     add_tile(tile, rx, ry)
 
 def rect(tile, startx, starty, width, height):
@@ -53,7 +53,7 @@ def room(startx, starty, width, height):
 
 # ---- message box functions ----
 def draw_msgbox():
-  if len(msgbox.messages) > (23 - current_map.height):
+  if len(msgbox.messages) > (23 - currentmap.height):
     msgbox.messages.pop(0)
   for n, msg in enumerate(msgbox.messages):
     cons.add_str(0, n + msgbox.y, msg)
@@ -63,7 +63,7 @@ def say(msg):
 
 # ---- item functions ----
 def draw_items():
-  for i in current_map.items:
+  for i in currentmap.items:
     if i.color > 6:
       cons.setbold()
     cons.setcolor(i.color)
@@ -71,15 +71,20 @@ def draw_items():
     cons.unsetcolor(i.color)
     cons.unsetbold()
     
+def check_items():
+  for i in currentmap.items:
+    if i.x == player.x and i.y == player.y:
+      say("There is a " + i.name + " here.")
+    
 def add_item(x, y, item):
-  current_map.items.append(item)
+  currentmap.items.append(item)
   item.x = x
   item.y = y
   
 # ---- player functions ----
 def draw_player():
-  if player.x in range(current_map.width):
-    if player.y in range(current_map.height):
+  if player.x in range(currentmap.width):
+    if player.y in range(currentmap.height):
       if player.color > 6:
         cons.setbold()
       cons.setcolor(player.color)
@@ -90,17 +95,23 @@ def draw_player():
 def move_player(dx, dy):
   newx = player.x + dx
   newy = player.y + dy
-  if newx in range(current_map.width):
-    if newy in range(current_map.height):
-      if current_map.getchar(newx, newy) in ['.', '\\']:
+  # check if coordinates are in bounds
+  if newx in range(currentmap.width):
+    if newy in range(currentmap.height):
+      # check if coordinates are passable
+      if currentmap.getchar(newx, newy) in ['.', '\\']:
+        # set new player position
         player.x = newx
         player.y = newy
+        # list items on floor (if any)
+        check_items()
         # move action successful
         return 0
-      # open doors
-      if current_map.getchar(newx, newy) == '+':
+      # open door (if any)
+      if currentmap.getchar(newx, newy) == '+':
         add_tile(tile_opendoor, newx, newy)
         say("You open the door.")
+        # opening a door counts as a move
         return 0
   else:
     # move action failed
@@ -113,16 +124,16 @@ def close_door():
   down = player.y + 1
   
   # close door if adjacent to player
-  if current_map.getchar(player.x, up)      == '\\':  # up
+  if currentmap.getchar(player.x, up)      == '\\':  # up
     add_tile(tile_door, player.x, up)
     return 0
-  elif current_map.getchar(player.x, down)  == '\\':  # down
+  elif currentmap.getchar(player.x, down)  == '\\':  # down
     add_tile(tile_door, player.x, down)
     return 0
-  elif current_map.getchar(right, player.y) == '\\':  # right
+  elif currentmap.getchar(right, player.y) == '\\':  # right
     add_tile(tile_door, right, player.y)
     return 0
-  elif current_map.getchar(left, player.y)  == '\\':  # left
+  elif currentmap.getchar(left, player.y)  == '\\':  # left
     add_tile(tile_door, left, player.y)
     return 0
   else:
@@ -156,42 +167,42 @@ def get_input():
 # ---- end player functions ----
       
       
-# ---- game start ----
+# ---- initalize everything ----
 
 # init game engine 
 cons = Console()
 game = Game()
-current_map = World()
+currentmap = World()
 
-# init message window below map screen
-msgbox = Message(0, current_map.height + 1)
+# init message window
+msgbox = Message(0, currentmap.height + 1)
 
 # init all map tiles in the game
-tile_grass = Tile('grass', '.', 3)
-tile_dirt  = Tile('dirt',  '.', 2)
-tile_tree  = Tile('tree',  'Y', 2)
-tile_floor = Tile('floor', '.', 0)
-tile_wall  = Tile('wall',  '#', 0)
-tile_door  = Tile('door',  '+', 2)
+tile_grass    = Tile('grass', '.', 3)
+tile_dirt     = Tile('dirt',  '.', 2)
+tile_tree     = Tile('tree',  'Y', 2)
+tile_floor    = Tile('floor', '.', 0)
+tile_wall     = Tile('wall',  '#', 0)
+tile_door     = Tile('door',  '+', 2)
 tile_opendoor = Tile('open door', '\\', 2)
 
 # init all items
 item_staff = Item('wooden staff', '|', 2)
 item_sword = Item('iron sword', '/', 0)
-item_bow = Item('longbow', ')', 2)
-item_book = Item('spell book', '?', 1)
-item_ring = Item('gold ring', '=', 9)
+item_bow   = Item('longbow', ')', 1)
+item_book  = Item('spell book', '?', 6)
+item_ring  = Item('gold ring', '=', 9)
 
 # init all monsters
-monster_zombie = Monster('walking corpse', 'z', 11)
-monster_imp  = Monster('lesser demon', '4', 8)
-monster_demon = Monster('greater demon', '3', 6)
-monster_spider = Monster('giant spider', 'X', 2)
+monster_zombie   = Monster('walking corpse', 'z', 11)
+monster_imp      = Monster('lesser demon', '4', 8)
+monster_demon    = Monster('greater demon', '3', 6)
+monster_spider   = Monster('giant spider', 'X', 2)
 monster_skeleton = Monster('walking skeleton', 'z', 7)
-monster_thing = Monster('abomination', '&', 13)
+monster_thing    = Monster('abomination', '&', 13)
 
 # init player
-player = Player('player', '@', 4)
+player   = Player('player', '@', 4)
 player.x = 15
 player.y = 10
 
@@ -207,9 +218,11 @@ add_item(7, 9, item_ring)
 add_item(30, 8, item_bow)
 
 # print a message
-say("Hello!")
+say("Welcome to the game!")
 
-# ---- begin main loop ----
+# ---- end initialization ----
+
+# ---- main game loop ----
 while game.end == False:
   # clear the screen
   cons.clear()
@@ -222,17 +235,14 @@ while game.end == False:
   draw_player()
   
   # debug stuff
-  move(0, 41)
-  addstr("Turns: " + str(game.turn) )
-  move(1, 41)
-  addstr("Player X: " + str(player.x) )
-  move(2, 41)
-  addstr("Player Y: " + str(player.y) )
+  cons.add_str(currentmap.width + 1, 0, "Turns: "    + str(game.turn))
+  cons.add_str(currentmap.width + 1, 1, "Player X: " + str(player.x))
+  cons.add_str(currentmap.width + 1, 2, "Player Y: " + str(player.y))
   
   # handle input
   get_input()
 
-# ---- end main loop ----
+# ---- end main game loop ----
 
 # close window
 cons.close()
