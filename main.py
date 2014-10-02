@@ -140,6 +140,15 @@ def close_door():
     # close action failed
     return 1
     
+def get_item():
+  for i in currentmap.items:
+    if i.x == player.x and i.y == player.y:
+      player.inv.append(i)
+      currentmap.items.remove(i)
+      return 0
+    else:
+      return 1
+    
 def get_input():
   key = getch()
   if   key == ord('q'):         # quit
@@ -162,6 +171,12 @@ def get_input():
       game.turn += 1
     else:
       say("There's nothing there to close.")
+  elif key is ord(','):
+    if get_item() == 0:
+      say("Taken.")
+      game.turn += 1
+    else:
+      say("There's nothing here.")
   else:
     say("Invalid command.")
 # ---- end player functions ----

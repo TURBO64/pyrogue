@@ -4,3 +4,4 @@ class Player:
     self.char  = char
     self.color = color
     self.x, self.y = -1, -1
+    self.inv = []
